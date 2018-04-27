@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button , Form, Input } from '../../components/components'
+import { Button , Form, Input, InlineMessage } from '../../components/components'
 import { goToSignUpPage } from './../../routes'
 import { signIn } from './../../services/services'
 
@@ -16,7 +16,7 @@ class LoginPage extends React.Component {
         this.state = {
             username: '',
             password: '',
-            role: '',
+            errors: []
         }
 
         this.getLoggedInUser = this.getLoggedInUser.bind(this)
@@ -26,7 +26,11 @@ class LoginPage extends React.Component {
 
     async getLoggedInUser() {
         const { username, password } = this.state 
-        return signIn(username, password).catch(err => console.log(err))
+        return signIn(username, password).catch(err => this.setState({
+            errors: [err],
+            username: '',
+            password: '',
+        }))
     }
 
     onLoginChange(e) {
@@ -39,11 +43,20 @@ class LoginPage extends React.Component {
         this.setState({ password })
     }
 
+    renderErrors(errors) {
+        return errors.map(error => (
+            <InlineMessage>
+                {error}
+            </InlineMessage>
+        ))
+    }
+
     render() {
-        const { username, password } = this.state
+        const { username, password, errors } = this.state
         return (
             <div className="grid">
                 <Form>
+                    {this.renderErrors(errors)}
                     <Input
                         onChange={this.onLoginChange}
                         placeholder='Enter your login'

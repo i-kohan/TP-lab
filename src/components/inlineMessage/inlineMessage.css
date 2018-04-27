@@ -1,0 +1,9 @@
+.inline-message {
+    position: relative;
+    flex-shrink: 0;
+    padding: 10px 25px;
+    min-height: 16px;
+    background-color: brown;
+    width: 100%;
+    font: 14px/1.2 'Roboto', sans-serif;
+}

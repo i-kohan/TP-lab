@@ -4,6 +4,7 @@ import {
     Form,
     Input,
     Select,
+    InlineMessage,
 } from '../../components/components'
 import { goToSignInPage } from '../../routes'
 import { createNewAccount } from '../../services/services'
@@ -42,12 +43,33 @@ class SignUpPage extends React.Component {
 
     onLoginChange(e) {
         const username = e.target.value
-        this.setState({ username })
+        this.setState({ username, errors: []  })
     }
 
     onPasswordChange(e) {
         const password = e.target.value
         this.setState({ password })
+    }
+
+    isNotEmpty(...props) {
+        return props.every(prop => !!props)
+    }
+
+    isConfirmed(password, confirmedPassword) {
+        return password === confirmedPassword
+    }
+
+    validate(props) {
+        const {
+            username,
+            password,
+            confirmedPassword,
+            role,
+        } = props
+
+        const isNotEmpty = username && password && confirmedPassword && role
+        const isConfirmed = password === confirmedPassword
+        return isNotEmpty && isConfirmed
     }
     
     onConfirmedPasswordChange(e) {
@@ -56,18 +78,7 @@ class SignUpPage extends React.Component {
     }
 
     async handleCreateNewAccount() {
-        const {
-            username,
-            password,
-            confirmedPassword,
-            role,
-        } = this.state
-        await createNewAccount(username, password, role).catch((err) => {
-            this.setState({ errors: err })
-        })
-    }
-
-    render() {
+        this.setState({ errors: [] })
         const {
             username,
             password,
@@ -75,9 +86,41 @@ class SignUpPage extends React.Component {
             role,
             errors,
         } = this.state
+        await createNewAccount(username, password, role).catch((err) => {
+            this.setState(() => ({
+                errors: [err],
+                username: '',
+                password: '',
+                confirmedPassword: '',
+            }))
+        })
+    }
+
+    renderErrors(errors) {
+        return errors.map(error => (
+            <InlineMessage>
+                {error}
+            </InlineMessage>
+        ))
+    }
+
+    render() {
+        const {
+            validate,
+            renderErrors,
+            state: {
+                username,
+                password,
+                confirmedPassword,
+                role,
+                errors,
+            },
+        } = this
+        const createAccountDisable = !validate({ username, password, confirmedPassword, role })
         return (
             <div className="grid">
                 <Form>
+                    {renderErrors(errors)}
                     <Input
                         onChange={this.onLoginChange}
                         placeholder='Enter your login'
@@ -109,7 +152,8 @@ class SignUpPage extends React.Component {
                     <Button
                         onClick={this.handleCreateNewAccount}
                         label="Create new Account"
-                        className="createAccount" />
+                        className="createAccount"
+                        disabled={createAccountDisable} />
                 </Form>
             </div>
         )

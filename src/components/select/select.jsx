@@ -1,7 +1,7 @@
 import React from 'react'
 import './select.css'
 
-export default function(props) {
+export default function Select(props) {
     const {
         value,
         onChange,

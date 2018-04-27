@@ -2,7 +2,7 @@ import React from 'react'
 import './input.css'
 import { read } from 'fs';
 
-export default function(props) {
+export default function Input(props) {
     const {
         placeholder,
         onChange,
@@ -11,6 +11,7 @@ export default function(props) {
         required,
         type,
         label,
+        setInputRef
     } = props
 
     return (
@@ -19,6 +20,7 @@ export default function(props) {
                 <span className='hidden'>{label}</span> 
             </label>
             <input
+                ref={setInputRef}
                 onChange={onChange}
                 placeholder={placeholder}
                 className={className}

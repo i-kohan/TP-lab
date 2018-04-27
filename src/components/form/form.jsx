@@ -1,7 +1,7 @@
 import React from 'react'
 import './form.css'
 
-export default function(props) {
+export default function Form(props) {
     const {
         className,
         children,
