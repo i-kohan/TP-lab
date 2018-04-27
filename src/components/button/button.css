@@ -37,19 +37,17 @@ button {
 }
 
 .createAccount:focus,
-.createAccount:hover, {
-  background-color: deepskyblue;
+.createAccount:hover {
+    background-color: deepskyblue;
 }
 
 .signUp:focus,
 .signUp:hover {
-  background-color: dimgrey;
+    background-color: dimgrey;
 }
-
-
 
 .signIn:focus,
 .signIn:hover {
-  background-color: #e686aa;
+    background-color: #e686aa;
 }
 

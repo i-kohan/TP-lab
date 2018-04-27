@@ -1,0 +1,21 @@
+select {
+    background-image: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    transition: background-color 0.3s;
+    width: 100%;    
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: #3b4148;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    text-indent: 5px;
+}
+
+option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 1rem;
+}

@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button , Form, Input } from '../../components/components'
+import { goToSignUpPage } from './../../routes'
+import { signIn } from './../../services/services'
 
 import './loginPage.css'
-
 
 class LoginPage extends React.Component {
     
@@ -17,28 +19,14 @@ class LoginPage extends React.Component {
             role: '',
         }
 
-        // this.loginNewUser = this.loginNewUser.bind(this)
         this.getLoggedInUser = this.getLoggedInUser.bind(this)
         this.onLoginChange = this.onLoginChange.bind(this)
         this.onPasswordChange = this.onPasswordChange.bind(this)
     }
 
-    // loginNewUser() {
-    //     const { username, password, role = 'regularUser' } = this.state
-    //     database
-    //         .ref(`users/${username}${password}`)
-    //         .set({
-    //             role
-    //         })
-    //         .then(console.log)
-    // }
-
-    getLoggedInUser(userId) {
+    async getLoggedInUser() {
         const { username, password } = this.state 
-        return this.db
-            .ref(`/users/${username}${password}`)
-            .once('value')
-            .then((snapshot) => console.log(snapshot.val()))
+        return signIn(username, password).catch(err => console.log(err))
     }
 
     onLoginChange(e) {
@@ -72,14 +60,14 @@ class LoginPage extends React.Component {
                         label="Password"
                         className='form__input'
                         type="password" />
-                    <Button
-                        onClick={this.getLoggedInUser}
-                        label='Sign In'
-                        className='signIn' />
-                    <Button
-                        onClick={this.loginNewUser}
-                        label='Sign Up'
-                        className='signUp' />
+                        <Button
+                            onClick={this.getLoggedInUser}
+                            label='Sign In'
+                            className='signIn' />
+                        <Button
+                            onClick={goToSignUpPage}
+                            label='Sign Up'
+                            className='signUp' />
                 </Form>
             </div>
         );

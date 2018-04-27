@@ -1,4 +1,5 @@
 import React from 'react'
+import './select.css'
 
 export default function(props) {
     const {
@@ -7,11 +8,17 @@ export default function(props) {
         options,
     } = props
 
+    function buildOptions(options) {
+        return options.map(option => (
+            <option value={option}>{option}</option>
+        ))
+    }
+
     return (
         <select
             value={value}
             onChange={onChange}>
-            {options}
+            {buildOptions(options)}
         </select>
     )
 } 
