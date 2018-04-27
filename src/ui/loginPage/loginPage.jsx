@@ -73,14 +73,14 @@ class LoginPage extends React.Component {
                         label="Password"
                         className='form__input'
                         type="password" />
-                        <Button
-                            onClick={this.getLoggedInUser}
-                            label='Sign In'
-                            className='signIn' />
-                        <Button
-                            onClick={goToSignUpPage}
-                            label='Sign Up'
-                            className='signUp' />
+                    <Button
+                        onClick={this.getLoggedInUser}
+                        label='Sign In'
+                        className='signIn' />
+                    <Button
+                        onClick={goToSignUpPage}
+                        label='Sign Up'
+                        className='signUp' />
                 </Form>
             </div>
         );
