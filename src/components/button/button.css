@@ -15,6 +15,16 @@ button {
     transition: background-color 0.3s;
 }
 
+.disabled {
+    background-color: darkgray !important; 
+    cursor: not-allowed !important;
+}
+
+.disabled:hover,
+.disable:focus {
+    background-color: darkgray !important;
+}
+
 .createAccount {
     background-color: dodgerblue;
     color: #eee;

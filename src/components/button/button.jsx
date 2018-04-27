@@ -1,12 +1,12 @@
 import React from 'react'
 import './button.css'
 
-export default function(props) {
+export default function Button(props) {
     const {
         label,
         onClick,
         className,
-        children,
+        disabled,
     } = props
 
     function handleOnClick(e) {
@@ -16,10 +16,10 @@ export default function(props) {
 
     return (
         <button
-            className={className}
+            disabled={disabled}
+            className={`${disabled ? `disabled ${className}` : className }`}
             onClick={handleOnClick} >
             {label}
-            {children}
         </button>
     )
 }
