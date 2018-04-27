@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button , Form, Input, InlineMessage } from '../../components/components'
-import { goToSignUpPage } from './../../routes'
+import { goToSignUpPage, goToHomePage } from './../../routes'
 import { signIn } from './../../services/services'
 
 import './loginPage.css'
@@ -26,11 +26,15 @@ class LoginPage extends React.Component {
 
     async getLoggedInUser() {
         const { username, password } = this.state 
-        return signIn(username, password).catch(err => this.setState({
-            errors: [err],
-            username: '',
-            password: '',
-        }))
+        signIn(username, password)
+            .then(user => {
+                goToHomePage(user.username)
+            })
+            .catch(err => this.setState({
+                errors: [err],
+                username: '',
+                password: '',
+            }))
     }
 
     onLoginChange(e) {

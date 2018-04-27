@@ -5,6 +5,7 @@ import {
     Route
 } from 'react-router-dom'
 import {
+    HomePage,
     LoginPage,
     SignUpPage,
 } from './ui/uiComponents'
@@ -15,6 +16,7 @@ function App() {
             <Switch>
                 <Route exact path='/' component={LoginPage} />
                 <Route path='/signUp' component={SignUpPage} />
+                <Route path='/home/:username' component={HomePage} />
             </Switch>
         </BrowserRouter>
     )

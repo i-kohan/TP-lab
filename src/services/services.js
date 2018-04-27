@@ -1,5 +1,6 @@
 import db from './dbconfig'
 import { goToSignInPage } from './../routes';
+import { getPermissions } from './helper';
 
 export const createNewAccount = async (username, password, role) => {
     const user = db.ref(`/users/${username}`)
@@ -7,14 +8,15 @@ export const createNewAccount = async (username, password, role) => {
     if (userData.exists()) {
         return Promise.reject('User already exists')
     }
-    user.set({ username, password, role })
+    user.set({ username, password, role, permissions: getPermissions(role) })
     goToSignInPage(); 
 }
 
 export const signIn = async (username, password) => {
     const user = await db.ref(`/users/${username}`).once('value')
-    if (user.exists() && user.val().password === password) {
-        console.log('EXISTS!!!!!')
+    const userData = user.val()
+    if (user.exists() && userData.password === password) {
+        return Promise.resolve(userData);
     } else {
         return Promise.reject('There is no user with such Username/password')
     }
