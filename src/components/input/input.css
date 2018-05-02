@@ -10,20 +10,7 @@ input {
   transition: background-color 0.3s;
 }
 
-.hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-
-input[type="text"],
-input[type="password"]{
+input{
   width: 100%;    
   border-radius: 0.25rem;
   padding: 1rem;
@@ -34,20 +21,18 @@ label {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-input[type="password"],
-input[type="text"] {
+input {
   background-color: #3b4148;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
 
- input[type="password"]:focus,
- input[type="password"]:hover,
- input[type="text"]:focus,
- input[type="text"]:hover {
+ input:focus,
+ input:hover {
   background-color: #434a52;
 }
 

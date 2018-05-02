@@ -8,5 +8,6 @@
 
 .form__field {
     display: flex;
+    flex-direction: column;
     margin: 0.875rem;
 }

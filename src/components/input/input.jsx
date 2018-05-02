@@ -1,6 +1,6 @@
 import React from 'react'
+
 import './input.css'
-import { read } from 'fs';
 
 export default function Input(props) {
     const {
@@ -17,7 +17,7 @@ export default function Input(props) {
     return (
         <React.Fragment>
             <label>
-                <span className='hidden'>{label}</span> 
+                <span>{label}</span> 
             </label>
             <input
                 ref={setInputRef}

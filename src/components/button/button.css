@@ -46,6 +46,18 @@ button {
     text-transform: uppercase;
 }
 
+.logout {
+    background-color: sandybrown;
+    color: #eee;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.logout:focus,
+.logout:hover {
+    background-color: aquamarine;
+}
+
 .createAccount:focus,
 .createAccount:hover {
     background-color: deepskyblue;

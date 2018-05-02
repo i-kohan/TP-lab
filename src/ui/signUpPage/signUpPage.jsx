@@ -7,7 +7,8 @@ import {
     InlineMessage,
 } from '../../components/components'
 import { goToSignInPage } from '../../routes'
-import { createNewAccount } from '../../services/services'
+import { createUser } from '../../classes/userFactory'
+
 
 const ROLES = [
     'Client',
@@ -51,6 +52,15 @@ class SignUpPage extends React.Component {
         this.setState({ password })
     }
 
+    onConfirmedPasswordChange(e) {
+        const { password } = this.state
+        const confirmedPassword = e.target.value
+        if (!this.isConfirmed(password, confirmedPassword)) {
+            return this.setState({ confirmedPassword, errors: ['Confirmed password Is wrong'] })
+        }
+        this.setState({ confirmedPassword, errors: [] })
+    }
+
     isNotEmpty(...props) {
         return props.every(prop => !!props)
     }
@@ -71,29 +81,20 @@ class SignUpPage extends React.Component {
         const isConfirmed = password === confirmedPassword
         return isNotEmpty && isConfirmed
     }
-    
-    onConfirmedPasswordChange(e) {
-        const confirmedPassword = e.target.value
-        this.setState({ confirmedPassword })
-    }
 
     async handleCreateNewAccount() {
         this.setState({ errors: [] })
-        const {
-            username,
-            password,
-            confirmedPassword,
-            role,
-            errors,
-        } = this.state
-        await createNewAccount(username, password, role).catch((err) => {
-            this.setState(() => ({
-                errors: [err],
-                username: '',
-                password: '',
-                confirmedPassword: '',
-            }))
-        })
+        const user = createUser(this.state)
+        user.saveUser()
+            .then(goToSignInPage)
+            .catch((err) => {
+                this.setState(() => ({
+                    errors: [err],
+                    username: '',
+                    password: '',
+                    confirmedPassword: '',
+                }))
+            })
     }
 
     renderErrors(errors) {
@@ -142,7 +143,7 @@ class SignUpPage extends React.Component {
                         placeholder='Confirm your password'
                         value={confirmedPassword}
                         required={true}
-                        label="Password"
+                        label="Confirmed password"
                         className='form__input'
                         type="password" />
                     <Select 
