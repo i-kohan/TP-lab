@@ -1,0 +1,84 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    flex-shrink: 0;
+    border: 7px solid transparent;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    background-color:gainsboro;
+    height: 150px;
+    width: 600px;
+}
+
+.card--title {
+    text-transform: uppercase;
+}
+
+.card--body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.card--column {
+    width: 120px;
+    height: 70px;
+    margin-top: 15px; 
+    text-align: center;
+}
+
+.card--mainElement {
+    font-weight: bold; 
+    padding-bottom: 5px;
+}
+
+.card--rowElement {
+    padding-top: 5px;
+}
+
+.card--button {
+    align-self: flex-end;
+    justify-self: center;
+    background-color: floralwhite;
+}
+
+.popup-card {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 100px;
+    flex-shrink: 0;
+    border: 7px solid transparent;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+    background-color:gainsboro;
+    width: 300px;
+    height: 200px;
+}
+
+.popup-card > .card--body {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-card .card--body > .card--column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 10px;
+    width: 100%;
+}
+
+.popup-card .card--body .card--column > .card--mainElement {
+    padding: 0;
+    margin: 3px;
+}
+
+.popup-card .card--body .card--column > .card--mainElement:after {
+    content: ': '
+}
+
+.popup-card .card--body .card--column > .card--rowElement {
+    padding: 0;
+    margin-left: 10px;
+}

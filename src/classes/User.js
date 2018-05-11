@@ -31,7 +31,7 @@ class User {
                 }
             case 'Bank Employee': 
                 return {
-                    getRequest: 'getRequest',
+                    getRequests: 'getRequests',
                     sendResponce: 'sendResponce',
                 }
         }

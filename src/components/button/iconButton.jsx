@@ -1,7 +1,7 @@
 import React from 'react'
-import './button.css'
+import './iconButton.css'
 
-export default function Button(props) {
+export default function IconButton(props) {
     const {
         label,
         onClick,
@@ -15,9 +15,9 @@ export default function Button(props) {
     }
 
     return (
-        <button 
+        <button
             disabled={disabled}
-            className={`${disabled ? `disabled ${className} button` : `${className} button` }`}
+            className={className}
             onClick={handleOnClick} >
             {label}
         </button>

@@ -7,6 +7,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: #2c3338;
 }
 
 html {
@@ -20,7 +21,6 @@ html {
 }
 
 #root {
-  background-color: #2c3338;
   color: #606468;
   font-family: 'Roboto', sans-serif;
   font-size: 0.875rem;

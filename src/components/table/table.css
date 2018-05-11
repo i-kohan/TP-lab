@@ -1,0 +1,11 @@
+table {
+    width: 90%;
+    height: 95%;
+    align-self: center;
+    justify-self: center;
+}
+
+tr {
+    background: black;
+    padding: 15px;
+}

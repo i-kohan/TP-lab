@@ -1,0 +1,21 @@
+.popup {
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    left: 0px;
+}
+
+.popup--content {
+    display: flex;
+    position: fixed;
+    content: "";
+    background-color: honeydew;
+    opacity: 0.9;
+    top: 120px;
+    bottom: 120px;
+    left: 320px;
+    right: 320px;
+}

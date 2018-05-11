@@ -6,32 +6,33 @@ export default function Table(props) {
     const mainRow = props.mainRow || []
     const rows = props.rows || [[]]
     const {
-        mainRow: [],
-        rows: [[]],
+        mainRow: {},
+        rows: [],
     } = props
 
     function renderMainRow(mainRow) {
         return (
             <tr className='mainRow'>
-                {mainRow.map(item => (
-                    <td>{item}</td>
-                ))}
+                {Object.entries(mainRow)
+                    .map(([key, value]) => (
+                        <td>{value}</td>
+                    ))}
             </tr>
         )
     }
 
-    function renderRows(rows) {
+    function renderRows(mainRow, rows) {
         return (
-            rows.map(items => (
+            rows.map(item => (
                 <tr>
-                    {items.map(item => (
-                        <td>
-                            {item}
-                        </td>
-                    ))}
+                    {Object.keys(mainRow)
+                        .map(key => (
+                            <td>
+                                {item[key]}
+                            </td>
+                        ))}
                 </tr>
             ))
-
         )
     }
 
@@ -39,7 +40,7 @@ export default function Table(props) {
         <table>
             <tbody>
                {renderMainRow(mainRow)}
-               {renderRows(rows)} 
+               {renderRows(mainRow, rows)} 
             </tbody>
         </table>
     )
