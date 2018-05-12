@@ -3,11 +3,23 @@
 }
 
 .form {
-    margin: calc(0.875rem * -1);
+    width: 250px;
+    padding: 10px;
+    margin: 50px;
   }
 
 .form__field {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0.875rem;
+    color: antiquewhite
+}
+
+.user-form {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.form--title {
+    color: #eee;
+    text-transform: uppercase;
 }

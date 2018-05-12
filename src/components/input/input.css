@@ -1,31 +1,85 @@
   
 input {
-  background-image: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  transition: background-color 0.3s;
+    content: '';
+    width: 100%;    
+    padding: 10px 0 10px 15px;
+    font-family: "Open Sans", sans;
+    font-weight: 400;
+    color: #377D6A;
+    background: #efefef;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    text-indent: 100px;
+    transition: all .3s ease-in-out;
 }
 
-input{
-  width: 100%;    
-  border-radius: 0.25rem;
-  padding: 1rem;
+input::-webkit-input-placeholder {
+    color: #efefef;
+    text-indent: 0;
+    font-weight: 300;
 }
 
-label {
-    background-color: #363b41;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    padding-left: 1.25rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
+input + label {
+    display: inline-block;
+    position: absolute;
+    transform: translateX(0);
+    padding: 10px 15px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #032429;
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(255,255,255,.4);
+    transition: all .3s ease-in-out, color .3s ease-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    overflow: hidden;
+    pointer-events: none
 }
 
-input {
+input + label:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    width: 100%;
+    background: #7AB893;
+    z-index: -1;
+    transform: translate(0);
+    transition: all .3s ease-in-out;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+input:focus,
+input:active {
+    color: #377D6A;
+    text-indent: 0;
+    background: #fff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+input:focus::-webkit-input-placeholder,
+input:active::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+input:focus + label,
+input:active + label {
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(19,74,70,.4);
+    transform: translateX(-100%);
+}
+
+input:focus + label:after,
+input:active + label:after {
+    transform: translate(100%);
+}
+
+/* input {
   background-color: #3b4148;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
@@ -38,5 +92,5 @@ input {
 
 .form__input {
     flex: 1;
-  }
+  } */
   

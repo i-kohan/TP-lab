@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
         const { username, password, errors } = this.state
         return (
             <div className="grid">
-                <Form>
+                <Form className="login">
                     {this.renderErrors(errors)}
                     <Input
                         onChange={this.onLoginChange}

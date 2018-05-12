@@ -16,9 +16,6 @@ export default function Input(props) {
 
     return (
         <React.Fragment>
-            <label>
-                <span>{label}</span> 
-            </label>
             <input
                 ref={setInputRef}
                 onChange={onChange}
@@ -27,6 +24,7 @@ export default function Input(props) {
                 value={value}
                 required={required}
                 type={type} />
+            <label>{label}</label>
         </React.Fragment>
     )
 } 
