@@ -1,56 +1,51 @@
 import React from 'react'
-import { Button, CardPopup, IconButton } from '../components'
+import { Button } from '../components'
 
 import './card.css'
 
 class Card extends React.Component {
 
-    constructor(props) {
-        super(props) 
-
-        this.state = {
-            showPopup: false
-        }
-
-        this.handleClick = this.handleClick.bind(this)
-        this.handleClose = this.handleClose.bind(this)
-    }
-
-    renderColumns(row, mainRow) {
-        return Object.entries(mainRow)
-            .map(([key, value]) => (
-                <div className="card--column">
-                    <div className="card--mainElement">
-                        {value}
+    renderColumns(row, allRows) {
+        return Object.entries(allRows)
+            .map(([key, value]) => {
+                if (key === 'status') {
+                    return row[key] ? (
+                        <div className="card--column">
+                            <div className="card--mainElement">
+                                {value}
+                            </div>
+                            <div className={`card--rowElement ${row[key]}`}>
+                                {row[key]}
+                            </div>
+                        </div>
+                    ) : null
+                }
+                return (
+                    <div className="card--column">
+                        <div className="card--mainElement">
+                            {value}
+                        </div>
+                        <div className="card--rowElement">
+                            {row[key]}
+                        </div>
                     </div>
-                    <div className="card--rowElement">
-                        {row[key]}
-                    </div>
-                </div>
-            ))
-    }
-
-    handleClick() {
-        this.setState({ showPopup: true })
-    }
-
-    handleClose() {
-        this.setState({ showPopup: false })
+                )
+            })
     }
 
     render() {
-        const { showPopup } = this.state
         const {
+            rowId,
             onClick,
             title,
-            mainRow,
+            allRows,
             row,
             buttonLabel,
             clickable,
             isInPopup,
         } = this.props
         
-        const columns = this.renderColumns(row, mainRow)
+        const columns = this.renderColumns(row, allRows)
 
         return (
             <div className={isInPopup ? "popup-card" : "card"}>
@@ -61,25 +56,20 @@ class Card extends React.Component {
                     {columns}
                 </div>
 
-                {clickable && 
-                    <Button
-                        label={buttonLabel}
-                        onClick={this.handleClick}
-                        className="card--button" />
-                }
-
-                {showPopup &&
-                    <CardPopup>
-                        <Card 
-                            title="Main information"
-                            mainRow={mainRow}
-                            row={row}
-                            clickable={false}
-                            isInPopup={true} />
-                        <IconButton
-                            className="close-icon"
-                            onClick={this.handleClose} />
-                    </CardPopup>
+                {clickable && (
+                    <React.Fragment>
+                        {this.props.sendToReport && (
+                            <Button 
+                                label="Send to Report"
+                                onClick={() => this.props.sendToReport(rowId, row)}
+                                className="card--button" />
+                        )}
+                        <Button
+                            label={buttonLabel}
+                            onClick={() => this.props.onClick(rowId)}
+                            className="card--button" />
+                    </React.Fragment>
+                    )
                 }
             </div>
         )

@@ -10,6 +10,7 @@ import {
 import {
     UserHome,
     ReferentHome,
+    BankEmployeeHome
 } from '../uiComponents'
 import { sendRequest, getRequests } from '../../services/requestsService'
 import { goToSignInPage } from './../../routes'
@@ -66,6 +67,7 @@ class HomePage extends React.Component {
                 <div className="layout">
                     {user.permissions.sendRequest && <UserHome user={user}/>}
                     {user.permissions.getRequests && <ReferentHome user={user}/>} 
+                    {user.permissions.getReportedRequests && <BankEmployeeHome user={user}/>}
                 </div>
             </React.Fragment>
         )

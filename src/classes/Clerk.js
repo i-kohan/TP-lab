@@ -1,7 +1,7 @@
 import User from './User'
 import { sendRequest } from '../services/requestsService'
 
-class Client extends User {
+class Clerk extends User {
     
     constructor(props) {
         super(props)
@@ -14,4 +14,4 @@ class Client extends User {
     }
 }
 
-export default Client
+export default Clerk

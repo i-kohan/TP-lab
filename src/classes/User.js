@@ -25,14 +25,18 @@ class User {
 
     getPermissions(role) {
         switch (role) {
-            case 'Client':
+            case 'Clerk':
                 return {
                     sendRequest: 'sendRequest'
                 }
             case 'Bank Employee': 
                 return {
-                    getRequests: 'getRequests',
+                    getReportedRequests: 'getReportedRequests',
                     sendResponce: 'sendResponce',
+                }
+            case 'Referent':
+                return {
+                    getRequests: 'getRequests',
                 }
         }
     }

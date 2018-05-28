@@ -25,6 +25,10 @@ export const MAIN_INFO = {
             label: 'Expiretion date',
             type: 'date',
             placeholder: 'Enter date',
+        },
+        status: {
+            label: 'Status',
+            type: 'text',
         }
     },
 }
@@ -32,31 +36,21 @@ export const MAIN_INFO = {
 export const PERSONAL_INFO = {
     title: "Personal info",
     fields: {
-        name: {
-            label: 'Name',
-            type: 'text',
-            placeholder: 'Enter name',
+        age: {
+            label: 'Age',
+            type: 'number',
+            placeholder: 'Age name',
         },
-        surname: {
-            label: 'Surname',
-            type: 'text',
-            placeholder: 'Enter surname',
+        salary: {
+            label: 'Salary',
+            type: 'number',
+            placeholder: 'Salary surname',
         },
         job: {
             label: 'Job',
             type: 'text',
             placeholder: 'Enter job',
         },
-        creditAmount: {
-            label: 'Credit amount',
-            type: 'number',
-            placeholder: 'Enter credit amount',
-        },
-        expiretionDate: {
-            label: 'Expiretion date',
-            type: 'date',
-            placeholder: 'Enter date',
-        }
     },
 }
 

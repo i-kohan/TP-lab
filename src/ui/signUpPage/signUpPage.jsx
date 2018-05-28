@@ -11,7 +11,8 @@ import { createUser } from '../../classes/userFactory'
 
 
 const ROLES = [
-    'Client',
+    'Clerk',
+    'Referent',
     'Bank Employee',
 ]
 
@@ -26,7 +27,7 @@ class SignUpPage extends React.Component {
             username: '',
             password: '',
             confirmedPassword: '',
-            role: 'Client',
+            role: 'Clerk',
             errors: [],
         }
 

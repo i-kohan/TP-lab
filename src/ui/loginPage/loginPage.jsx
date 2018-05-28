@@ -46,7 +46,7 @@ class LoginPage extends React.Component {
 
     renderErrors(errors) {
         return errors.map(error => (
-            <InlineMessage>
+            <InlineMessage key={error}>
                 {error}
             </InlineMessage>
         ))

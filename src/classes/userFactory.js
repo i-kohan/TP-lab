@@ -1,11 +1,14 @@
 import BankEmployee from './BankEmployee'
-import Client from './Client'
+import Clerk from './Clerk'
+import Referent from './Referent'
 
 export const createUser = ({ username, password, role }) => {
     switch (role) {
-        case 'Client':
-            return new Client({ username, password })
+        case 'Clerk':
+            return new Clerk({ username, password })
         case 'Bank Employee':
             return new BankEmployee({ username, password })
+        case 'Referent':
+            return new Referent({ username, password })
     }
 }

@@ -10,9 +10,7 @@ import {
     IconButton,
 } from './../../components/components'
 import { sendRequest, getRequests } from '../../services/requestsService'
-import { sendToReport } from '../../services/reportService'
 
-import './referentHome.css'
 import { ALL_FORMS, MAIN_INFO } from './../../constants';
 
 const MAIN_ROW = {
@@ -22,7 +20,7 @@ const MAIN_ROW = {
     date: 'Expiration date',
 }
 
-class ReferentHome extends React.Component {
+class BankEmployeeHome extends React.Component {
     constructor (props) {
         super(props)
         
@@ -34,7 +32,6 @@ class ReferentHome extends React.Component {
 
         this.handleClick = this.handleClick.bind(this)
         this.handleClose = this.handleClose.bind(this)
-        this.sendToReport = this.sendToReport.bind(this)
     }
 
     async componentDidMount() {
@@ -49,7 +46,7 @@ class ReferentHome extends React.Component {
 
     buildRequests(requests) {
         return Object.entries(requests)
-            .filter(([requestId, value]) => value.status === 'Initiated')
+            .filter(([requestId, value]) => value.status === 'Reported')
             .map(([key, value]) => {
                 return { id: key, ...value }
             })
@@ -81,17 +78,6 @@ class ReferentHome extends React.Component {
                         isInPopup={true} />
                 )
             })
-    }
-
-    async sendToReport(id, row) {
-        this.setState({ loading: true })
-        await sendToReport(id, row)
-        const requests = await getRequests()
-        
-        this.setState({
-            requests: requests.val(),
-            loading: false
-        })
     }
 
     render() {
@@ -138,8 +124,7 @@ class ReferentHome extends React.Component {
                 rowId={row.id}
                 buttonLabel="View full information"
                 clickable="true"
-                onClick={this.handleClick}
-                sendToReport={this.sendToReport} />
+                onClick={this.handleClick} />
             )
         })
 
@@ -152,4 +137,4 @@ class ReferentHome extends React.Component {
     }
 }
 
-export default ReferentHome
+export default BankEmployeeHome

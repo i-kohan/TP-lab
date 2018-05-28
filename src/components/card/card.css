@@ -6,7 +6,7 @@
     border: 7px solid transparent;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
     background-color:gainsboro;
-    height: 150px;
+    height: 200px;
     width: 600px;
 }
 
@@ -40,7 +40,22 @@
 .card--button {
     align-self: flex-end;
     justify-self: center;
+    margin-top: 10px;
     background-color: floralwhite;
+}
+
+.good {
+    background-color: darkgreen;
+    border-radius: 5px;
+    padding: 3px;
+    color: black;
+}
+
+.bad {
+    background-color: brown;
+    border-radius: 5px;
+    padding: 3px;
+    color: black;
 }
 
 .popup-card {

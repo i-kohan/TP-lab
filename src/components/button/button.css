@@ -32,6 +32,16 @@
     text-transform: uppercase;
 }
 
+.requestCredit {
+    position: absolute;
+    top: 60%;
+    background-color: dodgerblue;
+    color: #eee;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 150px;
+}
+
 .signIn {
     background-color: #ea4c88;
     color: #eee;
